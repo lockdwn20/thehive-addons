@@ -1,0 +1,39 @@
+{
+  "name": "Network Security Event – Containment",
+  "displayName": "Network Event Containment Phase",
+  "description": "## 🎯 Purpose\nHalt active threats and prevent lateral movement or data exfiltration.\n\n---\n\n## 📌 Objectives\n1. Perimeter Hardening (FW/Proxy blocks).\n2. Host Segregation.\n3. Forensic Preservation (Memory/PCAP).",
+  "severity": 2,
+  "tlp": 2,
+  "pap": 2,
+  "tags": ["network", "containment", "incident-response"],
+  "tasks": [
+    {
+      "title": "Task 1: Perimeter & Edge Blocking",
+      "group": "Containment",
+      "description": "### 🎯 Objective\nSever communication with the Malicious Actor.\n### 📌 Actions\n* Apply 'Deny' rules for the source IP on Firewall/IPS.\n* Blacklist malicious domain/URI at the Web Proxy.\n### ✅ Deliverables\n* Confirmation of perimeter block.",
+      "order": 0,
+      "mandatory": true
+    },
+    {
+      "title": "Task 2: Affected Host Isolation",
+      "group": "Containment",
+      "description": "### 🎯 Objective\nPrevent lateral movement.\n### 📌 Actions\n* Isolate host via VLAN steering or EDR isolation.\n* For critical assets, apply host-based FW 'Restrictive Mode'.\n### ✅ Deliverables\n* Isolation status of internal assets.",
+      "order": 1,
+      "mandatory": true
+    },
+    {
+      "title": "Task 3: Service & Port Remediation",
+      "group": "Containment",
+      "description": "### 🎯 Objective\nRemove the specific entry point.\n### 📌 Actions\n* Shutdown unauthorized services or close identified ports.\n* Disable compromised local or API accounts.\n### ✅ Deliverables\n* Service remediation report.",
+      "order": 2,
+      "mandatory": true
+    },
+    {
+      "title": "Task 4: Forensic Collection & Preservation",
+      "group": "Containment",
+      "description": "### 🎯 Objective\nSecure evidence for root cause analysis.\n### 📌 Actions\n* Trigger memory dump of affected host(s).\n* Export security logs and Zeek flow data.\n* **Collect PCAP for the affected timeframe (if available).**\n### ✅ Deliverables\n* Evidence inventory and links in TheHive.",
+      "order": 3,
+      "mandatory": true
+    }
+  ]
+}
