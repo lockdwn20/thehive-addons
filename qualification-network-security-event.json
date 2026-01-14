@@ -1,0 +1,39 @@
+{
+  "name": "Network Security Event – Qualification",
+  "displayName": "Network Event Qualification Phase",
+  "description": "## 🎯 Purpose\nTriaging network security alerts (IPS, scanning, illegal methods) to rule out false positives and authorized activity.\n\n---\n\n## 📌 Objectives\n1. Rule out maintenance/Change Requests.\n2. Verify telemetry via IPS, Proxy, and Zeek logs.\n3. Profile Malicious Actors/APT indicators.",
+  "severity": 1,
+  "tlp": 2,
+  "pap": 2,
+  "tags": ["network", "qualification", "triage"],
+  "tasks": [
+    {
+      "title": "Task 1: Infrastructure & Change Control Context",
+      "group": "Qualification",
+      "description": "### 🎯 Objective\nRule out authorized internal activity.\n### 📌 Actions\n* Check source IP against internal vulnerability scanners.\n* **Verify if activity matches an active/recent Change Request (CR).**\n* Confirm if destination port/service is standard for this host.\n### ✅ Deliverables\n* Activity status (Authorized/Unauthorized).",
+      "order": 0,
+      "mandatory": true
+    },
+    {
+      "title": "Task 2: Layer 7 & Traffic Analysis",
+      "group": "Qualification",
+      "description": "### 🎯 Objective\nInspect payloads for malicious intent using available logs.\n### 📌 Actions\n* Review **IPS/IDS** signatures for specific exploit violations.\n* Analyze **Web Proxy** logs for URI patterns and illegal HTTP methods.\n* Review **Zeek** connection logs for flow anomalies.\n### ✅ Deliverables\n* Technical summary of traffic legitimacy.",
+      "order": 1,
+      "mandatory": true
+    },
+    {
+      "title": "Task 3: Outcome & Success Verification",
+      "group": "Qualification",
+      "description": "### 🎯 Objective\nDetermine if the attempt was successful.\n### 📌 Actions\n* Cross-reference SIEM alerts with destination host logs (e.g., 200 OK vs 403 Forbidden).\n* Check for successful auth or follow-up commands post-event.\n### ✅ Deliverables\n* Outcome status (Blocked, Failed, or Allowed).",
+      "order": 2,
+      "mandatory": true
+    },
+    {
+      "title": "Task 4: Malicious Actor & APT Profiling",
+      "group": "Qualification",
+      "description": "### 🎯 Objective\nIdentify the threat actor.\n### 📌 Actions\n* Perform lookups via Threat Intel for **Malicious Actor** history.\n* Correlate with known **APT** indicators or tactics (TTPs).\n### ✅ Deliverables\n* Actor profile and attribution notes.",
+      "order": 3,
+      "mandatory": false
+    }
+  ]
+}
